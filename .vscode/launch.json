@@ -2,12 +2,19 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "command": "npm run dev",
+      "name": "Run npm start",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+
+    {
       "type": "node",
       "request": "attach",
       "name": "DEBUG Irongenerate",
       "port": 9229,
       "protocol": "inspector",
-      "restart": "true"
+      "restart": true
     }
   ]
 }
