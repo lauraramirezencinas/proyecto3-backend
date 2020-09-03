@@ -43,7 +43,7 @@ router.post("/", async (req, res, next)=>{
     console.log("producto creado", producto)
   }catch(err){
     res.json(err)
-    console.log("producto  no creado")
+    console.log("producto  no creado", err)
   }
 })
 

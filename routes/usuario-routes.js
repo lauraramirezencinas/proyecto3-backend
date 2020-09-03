@@ -50,7 +50,7 @@ router.patch('/:id', async (req, res, next) => {
       usuario.horario=horario;
     }
     usuario.save()
-    res.status(200).json({ message: 'usuario editado' })
+    res.status(200).json({ message: 'usuario editado',user:usuario })
 
   }
   catch (err) {
