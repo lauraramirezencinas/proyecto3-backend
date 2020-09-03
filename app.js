@@ -62,7 +62,7 @@ app.locals.title = 'Sugar-place';
 app.use(
   cors({
     credentials: true,
-    origin: ['http://localhost:3002', 'http://localhost:3000'] // <== aceptar llamadas desde este dominio
+    origin: ['http://localhost:3001', 'http://localhost:3000'] // <== aceptar llamadas desde este dominio
   })
 );
 
