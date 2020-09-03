@@ -30,14 +30,14 @@ router.get("/all", async (req, res, next)=>{
 router.post("/", async (req, res, next)=>{
   try{
     const{nombre, descripcion, precio, ingredientes,imagenUrl,idUsuario }= req.body
-    const iduser= req.user._id;
+    //const iduser= req.user._id;
     const producto = await Producto.create({
       nombre:nombre,
       descripcion:descripcion,
       precio:precio,
       ingredientes:ingredientes,
       imagenUrl:imagenUrl,
-      idUsuario:iduser
+      idUsuario:idUsuario
     })
     res.status(200).json(producto)
     console.log("producto creado", producto)
