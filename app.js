@@ -9,12 +9,15 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
-const session       = require('express-session');
 const passport      = require('passport');
+const cors         = require('cors');
+
 require('./configs/passport');
 
 mongoose
-  .connect('mongodb://localhost/sugar-place-backend', {useNewUrlParser: true})
+  .connect('mongodb://localhost/sugar-place-backend', { useCreateIndex: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -47,11 +50,8 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-app.use(session({
-  secret:process.env.SESS_SECRET ,
-  resave: true,
-  saveUninitialized: true
-}));
+const session = require('./configs/session')
+session(app)
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -59,7 +59,12 @@ app.use(passport.session());
 // default value for title local
 app.locals.title = 'Sugar-place';
 
-
+app.use(
+  cors({
+    credentials: true,
+    origin: ['http://localhost:3002', 'http://localhost:3000'] // <== aceptar llamadas desde este dominio
+  })
+);
 
 const index = require('./routes/index');
 app.use('/', index);
@@ -69,5 +74,8 @@ app.use('/usuario', usuario);
 
 const auth = require("./routes/auth-routes");
 app.use('/auth', auth);
+
+const producto = require("./routes/producto-routes");
+app.use('/producto', producto);
 
 module.exports = app;

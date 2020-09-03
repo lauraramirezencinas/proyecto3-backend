@@ -11,7 +11,7 @@ const passport = require('passport');
 const Usuario = require('../models/usuario-modelo');
 
 
-authRoutes.get("/signup", (req, res) => res.render("index"))
+//authRoutes.get("/signup", (req, res) => res.render("index"))
 
 authRoutes.post("/signup", async (req, res, next) => {
   try {
@@ -118,7 +118,7 @@ authRoutes.post("/signup", async (req, res, next) => {
 })
 
 
-authRoutes.get('/login', (req, res) => res.render('index'))
+//authRoutes.get('/login', (req, res) => res.render('index'))
 
 authRoutes.post('/login', async (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {

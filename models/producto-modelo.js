@@ -2,7 +2,7 @@ const {Schema,model} = require('mongoose');
 const mongoose = require('mongoose');
 
 const productoSchema = new Schema({
-  idUsario: {
+  idUsuario: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Usuario"
   }, 
@@ -22,7 +22,7 @@ const productoSchema = new Schema({
     trim: true,
     type: String
   },
-  ImagenUrl: {
+  imagenUrl: {
     type: String,
     default: "https://res.cloudinary.com/dtkvfvtev/image/upload/v1593469937/logotipo-restaurante_23-2148558726_ebzwhz.jpg"
   },

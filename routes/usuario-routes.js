@@ -4,8 +4,11 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const Usuario = require('../models/usuario-modelo');
 
+
+//ver usuario
 router.get("/:id", async (req, res, next) => {
   try {
+    console.log(req.user)
     const usuario = await Usuario.findById(req.params.id)
     res.status(200).json(usuario)
   } catch (err) {
@@ -13,25 +16,40 @@ router.get("/:id", async (req, res, next) => {
   }
 })
 
-
-router.put('/:id', async (req, res, next) => {
+//editar usuario
+router.patch('/:id', async (req, res, next) => {
   try {
     const { nombre, apellido, email, nombreNegocio, descripcion, calle, numero, cuidad,
       horario } = req.body
-    const usuarioEditado = await Usuario.findByIdAndUpdate(req.params.id, {$set:{
-      nombre: nombre,
-      apellido:apellido,
-      email:email,
-      nombreNegocio:nombreNegocio,
-      descripcion:descripcion,
-        direccion: {
-          calle: calle,
-          numero: numero,
-          cuidad:cuidad
-        },
-        horario: horario,
-    }},{new: true})
-
+    let usuario= await Usuario.findById(req.params.id)
+    if (nombre){
+      usuario.nombre=nombre;
+    }
+    if(apellido){
+    usuario.apellido=apellido;
+    }
+   if(email){
+      usuario.email=email;
+    }
+    if(nombreNegocio){
+      usuario.nombreNegocio=nombreNegocio;
+    }
+    if(descripcion){
+     usuario.descripcion=descripcion;
+    }
+    if(calle){
+      usuario.direccion.calle=calle;
+    }
+    if(numero){
+      usuario.direccion.numero=numero;
+    }
+    if(cuidad){
+      usuario.direccion.cuidad=cuidad;
+    }
+    if(horario){
+      usuario.horario=horario;
+    }
+    usuario.save()
     res.status(200).json({ message: 'usuario editado' })
 
   }
@@ -44,7 +62,7 @@ router.put('/:id', async (req, res, next) => {
   }
 })
 
-
+//eliminar usuario
 router.delete('/:id',async (req, res, next)=>{
   try {
     const usuario = await Usuario.findByIdAndRemove(req.params.id)

@@ -62,7 +62,13 @@ const usuarioSchema = new Schema({
   instagram: {
     type: String,
     trim: true,
-  }  
+  }, 
+  productos:[
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Producto'
+    }
+  ]  
 })
 
 module.exports = model('Usuario', usuarioSchema)
