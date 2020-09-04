@@ -53,7 +53,7 @@ const usuarioSchema = new Schema({
   horario: String,
   logoUrl: {
     type: String,
-    default: "https://res.cloudinary.com/dtkvfvtev/image/upload/v1593469937/logotipo-restaurante_23-2148558726_ebzwhz.jpg"
+    default: "https://dcassetcdn.com/design_img/3228659/710100/710100_17852441_3228659_03c147fc_image.jpg"
   },
   facebook: {
     type: String,

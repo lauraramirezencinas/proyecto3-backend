@@ -24,7 +24,7 @@ const productoSchema = new Schema({
   },
   imagenUrl: {
     type: String,
-    default: "https://res.cloudinary.com/dtkvfvtev/image/upload/v1593469937/logotipo-restaurante_23-2148558726_ebzwhz.jpg"
+    default: "https://www.pinch-arte.es/wp-content/uploads/2019/02/cookies-800x400.jpg"
   },
  
 })

@@ -7,13 +7,28 @@ const Usuario = require('../models/usuario-modelo');
 
 
 //ver todos los productos de un usuario 
-router.get("/all", async (req, res, next)=>{
+router.get("/profile", async (req, res, next)=>{
   try{
-    console.log("produ")
     const usuario = await Usuario.findById(req.user.id)
     const productos= await Producto.find({idUsuario:usuario})
     res.json(productos)
   } catch(err){
+    res.json(err)
+  }
+})
+
+//todos los productos sin uduario 
+router.get("/all", async (req, res, next)=>{
+  try{
+    let productos= await Producto.find()
+   
+    // for (let i =0 ; i< productos.length; i++){
+    //   let baker = await Usuario.findById(productos[i].idUsuario);
+    //   prods[i].bakerName ="juan"; 
+    // console.log(prods[0].bakerName);
+    res.json(productos)
+  } catch(err){
+    console.log(err);
     res.json(err)
   }
 })
