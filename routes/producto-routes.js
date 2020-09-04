@@ -5,6 +5,19 @@ const mongoose = require("mongoose");
 const Producto = require('../models/producto-modelo');
 const Usuario = require('../models/usuario-modelo');
 
+
+//ver todos los productos de un usuario 
+router.get("/all", async (req, res, next)=>{
+  try{
+    console.log("produ")
+    const usuario = await Usuario.findById(req.user.id)
+    const productos= await Producto.find({idUsuario:usuario})
+    res.json(productos)
+  } catch(err){
+    res.json(err)
+  }
+})
+
 //ver un prodcuto 
 router.get("/:id", async (req,res,next) => {
   try{
@@ -16,29 +29,20 @@ router.get("/:id", async (req,res,next) => {
   }
 })
 
-//ver todos los productos de un usuario 
-router.get("/all", async (req, res, next)=>{
-  try{
-    const productos= await Usuario.find().populate('producto')
-    res.json(productos)
-  } catch(err){
-    res.json(err)
-  }
-})
-
 //crear un producto 
 router.post("/", async (req, res, next)=>{
   try{
     const{nombre, descripcion, precio, ingredientes,imagenUrl,idUsuario }= req.body
-    //const iduser= req.user._id;
+    const iduser= req.user.id;
     const producto = await Producto.create({
       nombre:nombre,
       descripcion:descripcion,
       precio:precio,
       ingredientes:ingredientes,
       imagenUrl:imagenUrl,
-      idUsuario:idUsuario
+      idUsuario:iduser
     })
+    
     res.status(200).json(producto)
     console.log("producto creado", producto)
   }catch(err){

@@ -132,7 +132,7 @@ authRoutes.post('/login', async (req, res, next) => {
       return;
     }
 
-    req.login(theUser, (err) => {
+    req.logIn(theUser, (err) => {
       if (err) {
         res.status(500).json({ message: 'Session save went bad.' });
         return;
