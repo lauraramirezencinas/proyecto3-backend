@@ -17,15 +17,10 @@ router.get("/profile", async (req, res, next)=>{
   }
 })
 
-//todos los productos sin uduario 
+//todos los productos sin usuario 
 router.get("/all", async (req, res, next)=>{
   try{
-    let productos= await Producto.find()
-   
-    // for (let i =0 ; i< productos.length; i++){
-    //   let baker = await Usuario.findById(productos[i].idUsuario);
-    //   prods[i].bakerName ="juan"; 
-    // console.log(prods[0].bakerName);
+    let productos= await Producto.find().populate("idUsuario")
     res.json(productos)
   } catch(err){
     console.log(err);
