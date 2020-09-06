@@ -45,7 +45,7 @@ const usuarioSchema = new Schema({
     numero: {
       type: Number,
     },
-    cuidad: {
+    ciudad: {
       type: String,
       trim: true,
     },

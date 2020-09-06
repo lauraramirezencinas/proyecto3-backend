@@ -19,8 +19,13 @@ router.get("/:id", async (req, res, next) => {
 //editar usuario
 router.patch('/:id', async (req, res, next) => {
   try {
-    const { nombre, apellido, email, nombreNegocio, descripcion, calle, numero, cuidad,
+    const { nombre, apellido, email, nombreNegocio, descripcion, calle, numero, ciudad,
       horario } = req.body
+
+    if (req.user.id != req.params.id){
+      
+    res.status(401).json({ message: 'Usuario no autorizado'})
+    }
     let usuario= await Usuario.findById(req.params.id)
     if (nombre){
       usuario.nombre=nombre;
@@ -43,8 +48,8 @@ router.patch('/:id', async (req, res, next) => {
     if(numero){
       usuario.direccion.numero=numero;
     }
-    if(cuidad){
-      usuario.direccion.cuidad=cuidad;
+    if(ciudad){
+      usuario.direccion.ciudad=ciudad;
     }
     if(horario){
       usuario.horario=horario;
