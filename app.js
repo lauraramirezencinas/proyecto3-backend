@@ -11,6 +11,8 @@ const logger       = require('morgan');
 const path         = require('path');
 const passport      = require('passport');
 const cors         = require('cors');
+const Usuario = require('./models/usuario-modelo');
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 require('./configs/passport');
 
@@ -57,6 +59,36 @@ session(app)
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+// passport.use(
+//   new GoogleStrategy({
+//       clientID: process.env.GOOGLE_CLIENT_ID,
+//       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+//       callbackURL: "/auth/google/callback"
+//     },
+//     (accessToken, refreshToken, profile, done) => {
+//       console.log("Google account details:", profile);
+//       Usuario.findOne({
+//           googleID: profile.id
+//         })
+//         .then(user => {
+//           if (user) {
+//             done(null, user);
+//             return;
+//           }
+//           Usuario.create({
+//               googleID: profile.id,
+//               nombre: profile.displayName,
+//               email: profile.emails[0].value
+//             })
+//             .then(newUser => {
+//               done(null, newUser);
+//             })
+//             .catch(err => done(err)); // closes User.create()
+//         })
+//         .catch(err => done(err)); // closes User.findOne()
+//     })
+// );
 
 // default value for title local
 app.locals.title = 'Sugar-place';

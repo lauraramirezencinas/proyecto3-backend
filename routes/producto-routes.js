@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const Producto = require('../models/producto-modelo');
 const Usuario = require('../models/usuario-modelo');
 const uploader = require('../configs/cloudinary-setup');
-
+const cloudinary= require('cloudinary')
 
 //ver todos los productos de un usuario 
 router.get("/profile", async (req, res, next) => {
@@ -57,16 +57,16 @@ router.get("/:id", async (req, res, next) => {
 //crear un producto 
 router.post("/", uploader.single('imagenUrl'), async (req, res, next) => {
   try {
-    const { nombre, descripcion, precio, ingredientes, imagenUrl, idUsuario } = req.body
+    const { nombre, descripcion, precio, ingredientes, idUsuario } = req.body
     const iduser = req.user.id;
-    const imagenUlr= req.file.path;
+    const imageName= req.file.filename;
     const producto = await Producto.create({
       nombre: nombre,
       descripcion: descripcion,
       precio: precio,
       ingredientes: ingredientes,
-      imagenUrl: imagenUlr,
-      idUsuario: iduser
+      idUsuario: iduser,
+      imageName:imageName
     })
 
     res.status(200).json(producto)

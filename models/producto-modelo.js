@@ -22,10 +22,7 @@ const productoSchema = new Schema({
     trim: true,
     type: String
   },
-  imagenUrl: {
-    type: String,
-    default: "https://www.pinch-arte.es/wp-content/uploads/2019/02/cookies-800x400.jpg"
-  },
+  imageName:String
  
 })
 

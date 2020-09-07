@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const authRoutes = express.Router();
-
 const saltRounds = 10
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
@@ -141,6 +140,42 @@ authRoutes.post('/login', async (req, res, next) => {
     })
   })(req, res, next);
 })
+
+
+// ruta google
+// authRoutes.get("/google", passport.authenticate("google", {
+//   scope: [
+//     "https://www.googleapis.com/auth/userinfo.profile",
+//     "https://www.googleapis.com/auth/userinfo.email"
+//   ]
+// }));
+// authRoutes.get("/google/callback",
+//   // passport.authenticate("google", {
+//   //   successRedirect: "/user-profile",
+//   //   failureRedirect: "/login" 
+//   // })
+//   passport.authenticate('google', (err, theUser, failureDetails) => {
+//     if (err) {
+//       res.status(500).json({ message: 'Error de autentificacion' });
+//       return;
+//     }
+
+//     if (!theUser) {
+//       res.status(401).json(failureDetails);
+//       return;
+//     }
+
+//     req.logIn(theUser, (err) => {
+//       if (err) {
+//         res.status(500).json({ message: 'Session save went bad.' });
+//         return;
+//       }
+//       res.status(200).json(theUser);
+//     })
+//   })(req, res, next)
+// );
+
+
 
 authRoutes.post('/logout', (req, res, next) => {
   req.logout();

@@ -55,10 +55,11 @@ const usuarioSchema = new Schema({
     type: String,
     default: "https://dcassetcdn.com/design_img/3228659/710100/710100_17852441_3228659_03c147fc_image.jpg"
   },
+  googleID: String,
   facebook: {
     type: String,
     trim: true,
-  },
+  }, 
   instagram: {
     type: String,
     trim: true,
