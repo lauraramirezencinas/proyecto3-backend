@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require("mongoose");
 const Usuario = require('../models/usuario-modelo');
+const uploader = require('../configs/cloudinary-setup');
 
 
 //ver usuario
@@ -17,10 +18,11 @@ router.get("/:id", async (req, res, next) => {
 })
 
 //editar usuario
-router.patch('/:id', async (req, res, next) => {
+router.patch('/:id', uploader.single('logoUrl'), async (req, res, next) => {
   try {
     const { nombre, apellido, email, nombreNegocio, descripcion, calle, numero, ciudad,
       horario } = req.body
+    const logoUrl= req.file.path;
 
     if (req.user.id != req.params.id){
       
@@ -54,6 +56,9 @@ router.patch('/:id', async (req, res, next) => {
     if(horario){
       usuario.horario=horario;
     }
+    if(logoUrl){
+      usuario.logoUrl=logoUrl
+    }
     usuario.save()
     res.status(200).json({ message: 'usuario editado',user:usuario })
 
@@ -63,6 +68,7 @@ router.patch('/:id', async (req, res, next) => {
       res.status(400).json({ message: 'Specified id is not valid' });
       return;
     }
+    console.log(err)
     res.json(err);
   }
 })
