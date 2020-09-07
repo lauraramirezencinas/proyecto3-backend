@@ -14,7 +14,7 @@ const usuarioSchema = new Schema({
     type: String,
     required: [true, "El email es requerido :) ."],
     //asegurar formato email desde el servidor
-    //match: [/^\S+@\S+\.\S+$/, 'Dirección de correo inválida, revise su dirección de correo :) .'],
+    match: [/^\S+@\S+\.\S+$/, 'Dirección de correo inválida, revise su dirección de correo :) .'],
     unique: true,
     lowercase: true,
     trim: true

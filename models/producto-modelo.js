@@ -14,7 +14,7 @@ const productoSchema = new Schema({
   descripcion: {
     required: true,
     trim: true,
-    type: String
+    type: String,  
   },
    precio: Number,
    ingredientes: {
