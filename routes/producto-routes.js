@@ -36,6 +36,7 @@ router.get("/all", async (req, res, next) => {
       productos = await Producto.find().populate("idUsuario")
       }
     }
+    
     res.json(productos)
   } catch (err) {
     console.log(err);

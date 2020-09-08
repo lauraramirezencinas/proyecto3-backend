@@ -22,45 +22,46 @@ router.patch('/:id', uploader.single('logoUrl'), async (req, res, next) => {
   try {
     const { nombre, apellido, email, nombreNegocio, descripcion, calle, numero, ciudad,
       horario } = req.body
-    const logoUrl= req.file.path;
-
-    if (req.user.id != req.params.id){
-      
-    res.status(401).json({ message: 'Usuario no autorizado'})
+    let logoUrl = null;
+    if (req.file) {
+      logoUrl = req.file.path;
     }
-    let usuario= await Usuario.findById(req.params.id)
-    if (nombre){
-      usuario.nombre=nombre;
+    if (req.user.id != req.params.id) {
+      res.status(401).json({ message: 'Usuario no autorizado' })
     }
-    if(apellido){
-    usuario.apellido=apellido;
+    let usuario = await Usuario.findById(req.params.id)
+    if (nombre) {
+      usuario.nombre = nombre;
     }
-   if(email){
-      usuario.email=email;
+    if (apellido) {
+      usuario.apellido = apellido;
     }
-    if(nombreNegocio){
-      usuario.nombreNegocio=nombreNegocio;
+    if (email) {
+      usuario.email = email;
     }
-    if(descripcion){
-     usuario.descripcion=descripcion;
+    if (nombreNegocio) {
+      usuario.nombreNegocio = nombreNegocio;
     }
-    if(calle){
-      usuario.direccion.calle=calle;
+    if (descripcion) {
+      usuario.descripcion = descripcion;
     }
-    if(numero){
-      usuario.direccion.numero=numero;
+    if (calle) {
+      usuario.direccion.calle = calle;
     }
-    if(ciudad){
-      usuario.direccion.ciudad=ciudad;
+    if (numero) {
+      usuario.direccion.numero = numero;
     }
-    if(horario){
-      usuario.horario=horario;
+    if (ciudad) {
+      usuario.direccion.ciudad = ciudad;
     }
-    if(logoUrl){
-      usuario.logoUrl=logoUrl
+    if (horario) {
+      usuario.horario = horario;
+    }
+    if (logoUrl) {
+      usuario.logoUrl = logoUrl
     }
     usuario.save()
-    res.status(200).json({ message: 'usuario editado',user:usuario })
+    res.status(200).json({ message: 'usuario editado', user: usuario })
 
   }
   catch (err) {
@@ -73,11 +74,14 @@ router.patch('/:id', uploader.single('logoUrl'), async (req, res, next) => {
   }
 })
 
+
+
+
 //eliminar usuario
-router.delete('/:id',async (req, res, next)=>{
+router.delete('/:id', async (req, res, next) => {
   try {
     const usuario = await Usuario.findByIdAndRemove(req.params.id)
-    res.status(200).json({message: 'usuario borrado'})
+    res.status(200).json({ message: 'usuario borrado' })
   } catch (err) {
     res.json(err)
   }
