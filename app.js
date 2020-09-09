@@ -112,4 +112,7 @@ app.use('/auth', auth);
 const producto = require("./routes/producto-routes");
 app.use('/producto', producto);
 
+const pedido = require("./routes/pedido-routes");
+app.use('/pedido', pedido);
+
 module.exports = app;
