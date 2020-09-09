@@ -9,7 +9,7 @@ const pedidoSchema = new Schema({
   precioTotal: Number,
   items: [
     {
-      producto: String,
+      nombre: String,
       precio: Number,
       cantidad: Number
     }
@@ -26,7 +26,8 @@ const pedidoSchema = new Schema({
     type: Number
   },
   email: String, 
-  recogida:Number
+  recogida:Number, 
+  numeroPedido:Number
 
 })
 
