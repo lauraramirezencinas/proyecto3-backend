@@ -7,11 +7,15 @@ const Producto = require('../models/producto-modelo');
 const Pedido = require('../models/pedido-modelo');
 
 
-//ver un pedido 
+//ver todos los  pedido por baker
 router.get("/all", async (req, res, next) => {
     try {
-        const usuario = await Usuario.findById(req.user.id);
-        const pedidos = await Pedido.find({ idUsuario: usuario })
+        // const usuario = await Usuario.findById(req.user.id);
+        let pedidos = null 
+        if (req.user){
+             pedidos = await Pedido.find({ idUsuario:req.user.id})
+             console.log(pedidos)
+        }        
         res.status(200).json(pedidos)
     }
     catch (err) {
@@ -19,10 +23,22 @@ router.get("/all", async (req, res, next) => {
     }
 })
 
+//ver un solo pedido 
+router.get("/:id", async (req, res, next) => {
+    try {       
+        const pedido = await Pedido.find({_id:req.params.id})
+        res.status(200).json(pedido)
+        
+    }
+    catch (err) {
+        res.json(err)
+    }
+})
+
+//crear un pedido 
 router.post("/", async (req, res, next) => {
     try {
-        const { precioTotal, nombre, telefono, email, recogida, idUsuario} = req.body; 
-        const items=req.body.items;
+        const { precioTotal, nombre, telefono, email, recogida, idUsuario, items} = req.body; 
         const pedidos= await Pedido.find()
         let numeroPedido=1000;
         if (pedidos.length != 0){
@@ -35,7 +51,7 @@ router.post("/", async (req, res, next) => {
         }
        const datos={
         idUsuario: idUsuario,
-        //precioTotal: precioTotal, 
+        precioTotal: precioTotal, 
         items:items, 
         nombre:nombre,
         telefono:telefono,
