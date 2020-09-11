@@ -26,14 +26,19 @@ const pedidoSchema = new Schema({
     type: Number
   },
   email: String,
-  recogida: Number,
+  recogida: String,
   numeroPedido: Number,
   status: {
     type: String,
-    enum: ['Nuevo', 'EnPreparation', 'Finalizado', 'Recogido', 'Cancelado'],
+    enum: ['Nuevo', 'EnPreparacion', 'Finalizado', 'Recogido', 'Cancelado'],
     default: 'Nuevo'
   },
-  lastActiveAt: Date
+  created_at: { 
+    type: Date, 
+    default: function(){
+      return Date.now();
+    }
+   }
 
 })
 

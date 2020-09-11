@@ -14,7 +14,6 @@ router.get("/all", async (req, res, next) => {
         let pedidos = null 
         if (req.user){
              pedidos = await Pedido.find({ idUsuario:req.user.id})
-             console.log(pedidos)
         }        
         res.status(200).json(pedidos)
     }
@@ -56,8 +55,9 @@ router.post("/", async (req, res, next) => {
         nombre:nombre,
         telefono:telefono,
         email:email, 
+        recogida:recogida,
         numeroPedido:numeroPedido
-        //recogida:recogida
+
        }
         const pedido = await Pedido.create(datos)
         res.status(200).json(pedido)
@@ -65,6 +65,19 @@ router.post("/", async (req, res, next) => {
     } catch (err) {
         res.json(err)
         console.log("pedido  no creado", err)
+    }
+})
+
+//editar el pedido 
+router.patch("/:id", async (req,res,next)=>{
+    try{
+
+        const pedido = await Pedido.findByIdAndUpdate(req.params.id, req.body)
+        res.json({ message: 'pedido editado' })
+    }
+    catch (err) {
+        res.json(err)
+        console.log("el pedido no fue editado ", err)
     }
 })
 
