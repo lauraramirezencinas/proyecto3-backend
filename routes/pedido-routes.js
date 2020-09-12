@@ -12,12 +12,16 @@ router.get("/all", async (req, res, next) => {
     try {
 
         let pedidos = null
+
         if (req.user) {
-            pedidos = await Pedido.find({ idUsuario: req.user.id })
             if (req.query.status) {
-                console.log("filtroooo")
-                pedidos = await Pedido.find({ status: req.query.status })
+                console.log("filtroooo",req.query.status )
+                pedidos = await Pedido.find({idUsuario: req.user.id ,status: req.query.status })
+            }else{
+                pedidos = await Pedido.find({ idUsuario: req.user.id })
             }
+            
+           
         }
         res.status(200).json(pedidos)
     }
