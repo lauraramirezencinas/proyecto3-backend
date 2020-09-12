@@ -1,6 +1,9 @@
 const { Schema, model } = require('mongoose');
 const mongoose = require('mongoose');
 
+
+
+
 const pedidoSchema = new Schema({
   idUsuario: {
     type: mongoose.Schema.Types.ObjectId,
@@ -33,12 +36,11 @@ const pedidoSchema = new Schema({
     enum: ['Nuevo', 'EnPreparacion', 'Finalizado', 'Recogido', 'Cancelado'],
     default: 'Nuevo'
   },
-  created_at: { 
-    type: Date, 
+  created_at: {
+    type: Date,
     default: function(){
-      return Date.now();
-    }
-   }
+      return new Date()}
+  }
 
 })
 
