@@ -10,11 +10,15 @@ const Pedido = require('../models/pedido-modelo');
 //ver todos los  pedido por baker
 router.get("/all", async (req, res, next) => {
     try {
-        // const usuario = await Usuario.findById(req.user.id);
-        let pedidos = null 
-        if (req.user){
-             pedidos = await Pedido.find({ idUsuario:req.user.id})
-        }        
+
+        let pedidos = null
+        if (req.user) {
+            pedidos = await Pedido.find({ idUsuario: req.user.id })
+            if (req.query.status) {
+                console.log("filtroooo")
+                pedidos = await Pedido.find({ status: req.query.status })
+            }
+        }
         res.status(200).json(pedidos)
     }
     catch (err) {
@@ -24,10 +28,10 @@ router.get("/all", async (req, res, next) => {
 
 //ver un solo pedido 
 router.get("/:id", async (req, res, next) => {
-    try {       
-        const pedido = await Pedido.find({_id:req.params.id})
+    try {
+        const pedido = await Pedido.find({ _id: req.params.id })
         res.status(200).json(pedido)
-        
+
     }
     catch (err) {
         res.json(err)
@@ -37,28 +41,28 @@ router.get("/:id", async (req, res, next) => {
 //crear un pedido 
 router.post("/", async (req, res, next) => {
     try {
-        const { precioTotal, nombre, telefono, email, recogida, idUsuario, items} = req.body; 
-        const pedidos= await Pedido.find()
-        let numeroPedido=1000;
-        if (pedidos.length != 0){
-            let ordenados = pedidos.sort((a,b)=> a.numeroPedido- b.numeroPedido);
-            let total= ordenados.length;
+        const { precioTotal, nombre, telefono, email, recogida, idUsuario, items } = req.body;
+        const pedidos = await Pedido.find()
+        let numeroPedido = 1000;
+        if (pedidos.length != 0) {
+            let ordenados = pedidos.sort((a, b) => a.numeroPedido - b.numeroPedido);
+            let total = ordenados.length;
             console.log(ordenados)
-            let mayor=ordenados[total - 1]
+            let mayor = ordenados[total - 1]
             console.log(mayor)
-            numeroPedido= mayor.numeroPedido+1
+            numeroPedido = mayor.numeroPedido + 1
         }
-       const datos={
-        idUsuario: idUsuario,
-        precioTotal: precioTotal, 
-        items:items, 
-        nombre:nombre,
-        telefono:telefono,
-        email:email, 
-        recogida:recogida,
-        numeroPedido:numeroPedido
+        const datos = {
+            idUsuario: idUsuario,
+            precioTotal: precioTotal,
+            items: items,
+            nombre: nombre,
+            telefono: telefono,
+            email: email,
+            recogida: recogida,
+            numeroPedido: numeroPedido
 
-       }
+        }
         const pedido = await Pedido.create(datos)
         res.status(200).json(pedido)
         console.log("pedido creado", pedido)
@@ -69,8 +73,8 @@ router.post("/", async (req, res, next) => {
 })
 
 //editar el pedido 
-router.patch("/:id", async (req,res,next)=>{
-    try{
+router.patch("/:id", async (req, res, next) => {
+    try {
 
         const pedido = await Pedido.findByIdAndUpdate(req.params.id, req.body)
         res.json({ message: 'pedido editado' })
