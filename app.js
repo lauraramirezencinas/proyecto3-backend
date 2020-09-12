@@ -17,7 +17,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 require('./configs/passport');
 
 mongoose
-  .connect('mongodb://localhost/sugar-place-backend', { useCreateIndex: true,
+  .connect(process.env.MONGODB_URI, { useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true})
   .then(x => {
