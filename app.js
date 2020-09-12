@@ -60,10 +60,6 @@ session(app)
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use((req, res, next) => {
-  // If no routes match, send them the React HTML.
-  res.sendFile(__dirname + "/public/index.html");
-});
 
 
 // passport.use(
@@ -120,5 +116,11 @@ app.use('/producto', producto);
 
 const pedido = require("./routes/pedido-routes");
 app.use('/pedido', pedido);
+
+app.use((req, res, next) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/public/index.html");
+});
+
 
 module.exports = app;
