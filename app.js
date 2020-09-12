@@ -103,19 +103,19 @@ app.use(
 );
 
 const index = require('./routes/index');
-app.use('/', index);
+app.use('/api/', index);
 
 const usuario = require("./routes/usuario-routes");
-app.use('/usuario', usuario);
+app.use('/api/usuario', usuario);
 
 const auth = require("./routes/auth-routes");
-app.use('/auth', auth);
+app.use('/api/auth', auth);
 
 const producto = require("./routes/producto-routes");
-app.use('/producto', producto);
+app.use('/api/producto', producto);
 
 const pedido = require("./routes/pedido-routes");
-app.use('/pedido', pedido);
+app.use('/api/pedido', pedido);
 
 app.use((req, res, next) => {
   // If no routes match, send them the React HTML.
