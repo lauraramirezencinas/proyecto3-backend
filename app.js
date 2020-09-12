@@ -99,6 +99,10 @@ app.use(
     origin: ['http://localhost:3001', 'http://localhost:3000'] // <== aceptar llamadas desde este dominio
   })
 );
+app.use((req, res, next) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 const index = require('./routes/index');
 app.use('/', index);
