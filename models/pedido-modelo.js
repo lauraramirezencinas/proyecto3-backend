@@ -18,17 +18,23 @@ const pedidoSchema = new Schema({
     }
   ],
   nombre: {
-    required: true,
+    required: [true, "El nombre de usuario es requerido :) ."],
     trim: true,
     type: String
   }
   ,
   telefono: {
-    required: true,
+    required: [true, "El telefono es requerido :) ."],
     trim: true,
     type: Number
   },
-  email: String,
+  email: {
+    type: String,
+    match: [/^\S+@\S+\.\S+$/, 'Dirección de correo inválida, revise su dirección de correo :) .'],
+    unique: true,
+    lowercase: true,
+    trim: true
+  },
   recogida: String,
   numeroPedido: Number,
   status: {

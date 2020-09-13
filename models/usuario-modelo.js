@@ -41,12 +41,7 @@ const usuarioSchema = new Schema({
     calleNumero: {
       type: String,
       trim: true,
-    },
-  
-    ciudad: {
-      type: String,
-      trim: true,
-    },
+    }
   },  
   horario: String,
   logoUrl: {
