@@ -38,13 +38,11 @@ const usuarioSchema = new Schema({
     trim: true,
   },
   direccion: {
-    calle: {
+    calleNumero: {
       type: String,
       trim: true,
     },
-    numero: {
-      type: Number,
-    },
+  
     ciudad: {
       type: String,
       trim: true,

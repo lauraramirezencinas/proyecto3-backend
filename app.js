@@ -117,6 +117,10 @@ app.use('/api/producto', producto);
 const pedido = require("./routes/pedido-routes");
 app.use('/api/pedido', pedido);
 
+const location = require("./routes/location-routes");
+app.use('/api/maps', location);
+
+
 app.use((req, res, next) => {
   // If no routes match, send them the React HTML.
   res.sendFile(__dirname + "/public/index.html");

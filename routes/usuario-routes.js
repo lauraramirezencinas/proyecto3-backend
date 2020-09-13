@@ -20,7 +20,7 @@ router.get("/:id", async (req, res, next) => {
 //editar usuario
 router.patch('/:id', uploader.single('logoUrl'), async (req, res, next) => {
   try {
-    const { nombre, apellido, email, nombreNegocio, descripcion, calle, numero, ciudad,
+    const { nombre, apellido, email, nombreNegocio, descripcion, calleNumero, ciudad,
       horario } = req.body
     let logoUrl = null;
     if (req.file) {
@@ -45,12 +45,12 @@ router.patch('/:id', uploader.single('logoUrl'), async (req, res, next) => {
     if (descripcion) {
       usuario.descripcion = descripcion;
     }
-    if (calle) {
-      usuario.direccion.calle = calle;
+    if (calleNumero) {
+      usuario.direccion.calleNumero = calleNumero;
     }
-    if (numero) {
-      usuario.direccion.numero = numero;
-    }
+    // if (numero) {
+    //   usuario.direccion.numero = numero;
+    // }
     if (ciudad) {
       usuario.direccion.ciudad = ciudad;
     }
