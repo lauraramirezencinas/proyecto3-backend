@@ -78,7 +78,7 @@ router.post("/", async (req, res, next) => {
         console.log("pedido creado", pedido)
     } catch (err) {
         console.log(err)
-        //res.status(401).json({ message: 'El nombre y telefono son obligatorios' })
+        res.status(401).json({ message: res })
     }
 })
 
