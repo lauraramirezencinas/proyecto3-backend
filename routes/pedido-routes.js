@@ -66,10 +66,7 @@ router.post("/", async (req, res, next) => {
             numeroPedido = mayor.numeroPedido + 1
         }
         paso += "3"
-        res.status(400).json({
-            message: paso
-          })
-          return
+        
         const datos = {
             idUsuario: idUsuario,
             precioTotal: precioTotal,
@@ -84,6 +81,10 @@ router.post("/", async (req, res, next) => {
         paso += "4"
         const pedido = await Pedido.create(datos)
         paso += "5"
+        res.status(400).json({
+            message: paso
+          })
+          return
         res.status(200).json(pedido)
 
         paso += "6"
