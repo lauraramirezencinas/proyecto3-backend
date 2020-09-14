@@ -52,9 +52,9 @@ router.post("/", async (req, res, next) => {
              })
              return
            }
-        let paso = "1"
+        
         const pedidos = await Pedido.find()
-        paso += "2"
+        
              
         let numeroPedido = 1000;
         if (pedidos.length != 0) {
@@ -65,7 +65,7 @@ router.post("/", async (req, res, next) => {
             console.log(mayor)
             numeroPedido = mayor.numeroPedido + 1
         }
-        paso += "3"
+       
         
         const datos = {
             idUsuario: idUsuario,
@@ -78,14 +78,14 @@ router.post("/", async (req, res, next) => {
             numeroPedido: numeroPedido
 
         }
-        paso += "4"
+       console.log(datos)
         
         const pedido = await Pedido.create(datos)
-        paso += "5"
+       
         
         res.status(200).json(pedido)
 
-        paso += "6"
+       
         //console.log("pedido creado", pedido)
     } catch (err) {
         console.log(err)

@@ -29,8 +29,7 @@ const pedidoSchema = new Schema({
     type: Number
   },
   email: {
-    type: String,
-    match: [/^\S+@\S+\.\S+$/, 'Dirección de correo inválida, revise su dirección de correo :) .'],
+    type: String
   },
   recogida: String,
   numeroPedido: Number,
