@@ -72,17 +72,14 @@ router.post("/", async (req, res, next) => {
             precioTotal: precioTotal,
             items: items,
             nombre: nombre,
-            telefono: telefono,
+            telefono: parseInt(telefono),
             email: email,
             recogida: recogida,
             numeroPedido: numeroPedido
 
         }
         paso += "4"
-        res.status(400).json({
-            message: datos
-          })
-          return
+        
         const pedido = await Pedido.create(datos)
         paso += "5"
         
