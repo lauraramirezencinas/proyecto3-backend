@@ -46,6 +46,12 @@ router.get("/:id", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
     try {
         const { precioTotal, nombre, telefono, email, recogida, idUsuario, items } = req.body;
+        if (!nombre || !telefono ) {
+            res.status(400).json({
+              message: "Todos los campos son obligatorios*"
+            })
+            return
+          }
         const pedidos = await Pedido.find()
         let numeroPedido = 1000;
         if (pedidos.length != 0) {

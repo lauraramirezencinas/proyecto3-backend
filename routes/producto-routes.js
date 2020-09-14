@@ -60,7 +60,20 @@ router.post("/", uploader.single('imagenUrl'), async (req, res, next) => {
   try {
     const { nombre, descripcion, precio, ingredientes, idUsuario } = req.body
     const iduser = req.user.id;
+    if (typeof(req.file) === "undefined"){
+      res.status(400).json({
+        message: "La imagen es obligatoria"
+      })
+      return
+    }
+
     const imageName= req.file.filename;
+    if (!nombre || !descripcion || !precio || !ingredientes || !imageName) {
+      res.status(400).json({
+        message: "Todos los campos son obligatorios*"
+      })
+      return
+    }
     const producto = await Producto.create({
       nombre: nombre,
       descripcion: descripcion,

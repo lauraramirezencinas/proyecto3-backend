@@ -26,6 +26,7 @@ const productoSchema = new Schema({
     required: true,
     trim: true,
     type: String, 
+    default:"https://www.istockphoto.com/es/vector/vintage-retro-bakery-logo-badge-or-label-gm615627502-106845105"
   }
  
 })
