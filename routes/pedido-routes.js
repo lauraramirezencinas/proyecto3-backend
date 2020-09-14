@@ -46,13 +46,19 @@ router.get("/:id", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
     try {
         const { precioTotal, nombre, telefono, email, recogida, idUsuario, items } = req.body;
-        // if (!nombre || !telefono ) {
-        //     res.status(400).json({
-        //       message: "Todos los campos son obligatorios*"
-        //     })
-        //     return
-        //   }
+        if (!nombre || !telefono ) {
+             res.status(400).json({
+               message: "Todos los campos son obligatorios*"
+             })
+             return
+           }
+        let paso = "1"
         const pedidos = await Pedido.find()
+        paso += "2"
+             res.status(400).json({
+               message: "Todos los campos son obligatorios*"
+             })
+             return
         let numeroPedido = 1000;
         if (pedidos.length != 0) {
             let ordenados = pedidos.sort((a, b) => a.numeroPedido - b.numeroPedido);
@@ -62,6 +68,7 @@ router.post("/", async (req, res, next) => {
             console.log(mayor)
             numeroPedido = mayor.numeroPedido + 1
         }
+        paso += "3"
         const datos = {
             idUsuario: idUsuario,
             precioTotal: precioTotal,
@@ -73,9 +80,13 @@ router.post("/", async (req, res, next) => {
             numeroPedido: numeroPedido
 
         }
+        paso += "4"
         const pedido = await Pedido.create(datos)
+        paso += "5"
         res.status(200).json(pedido)
-        console.log("pedido creado", pedido)
+
+        paso += "6"
+        //console.log("pedido creado", pedido)
     } catch (err) {
         console.log(err)
         res.status(401).json({ message: res })
