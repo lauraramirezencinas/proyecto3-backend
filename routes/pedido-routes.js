@@ -69,7 +69,7 @@ router.post("/", async (req, res, next) => {
         
         const datos = {
             idUsuario: idUsuario,
-            precioTotal: precioTotal,
+            precioTotal: parseInt(precioTotal),
             items: items,
             nombre: nombre,
             telefono: parseInt(telefono),
