@@ -79,12 +79,13 @@ router.post("/", async (req, res, next) => {
 
         }
         paso += "4"
-        const pedido = await Pedido.create(datos)
-        paso += "5"
         res.status(400).json({
-            message: paso
+            message: datos
           })
           return
+        const pedido = await Pedido.create(datos)
+        paso += "5"
+        
         res.status(200).json(pedido)
 
         paso += "6"
