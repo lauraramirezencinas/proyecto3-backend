@@ -46,7 +46,7 @@ const usuarioSchema = new Schema({
   horario: String,
   logoUrl: {
     type: String,
-    default: "https://dcassetcdn.com/design_img/3228659/710100/710100_17852441_3228659_03c147fc_image.jpg"
+    default: "https://media.istockphoto.com/vectors/vintage-retro-bakery-logo-badge-or-label-vector-id615627502"
   },
   googleID: String,
   facebook: {

@@ -22,7 +22,11 @@ const productoSchema = new Schema({
     trim: true,
     type: String
   },
-  imageName:String
+  imageName:{
+    required: true,
+    trim: true,
+    type: String, 
+  }
  
 })
 
