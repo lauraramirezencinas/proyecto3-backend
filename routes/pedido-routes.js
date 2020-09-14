@@ -55,10 +55,7 @@ router.post("/", async (req, res, next) => {
         let paso = "1"
         const pedidos = await Pedido.find()
         paso += "2"
-             res.status(400).json({
-               message: "Todos los campos son obligatorios*"
-             })
-             return
+             
         let numeroPedido = 1000;
         if (pedidos.length != 0) {
             let ordenados = pedidos.sort((a, b) => a.numeroPedido - b.numeroPedido);
@@ -69,6 +66,10 @@ router.post("/", async (req, res, next) => {
             numeroPedido = mayor.numeroPedido + 1
         }
         paso += "3"
+        res.status(400).json({
+            message: paso
+          })
+          return
         const datos = {
             idUsuario: idUsuario,
             precioTotal: precioTotal,
