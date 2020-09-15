@@ -19,8 +19,7 @@ router.get("/all", async (req, res, next) => {
                 pedidos = await Pedido.find({idUsuario: req.user.id ,status: req.query.status })
             }else{
                 pedidos = await Pedido.find({ idUsuario: req.user.id })
-            }
-            
+            }           
            
         }
         res.status(200).json(pedidos)
