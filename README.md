@@ -29,6 +29,7 @@ Un Marketplace donde las pastelerias registrandose puedan poner sus productos. E
 -**Filtrar por estado de pedido**
 -**Alerta nuevo pedido**
 -**Comentarios**
+-**Email usuario**
 
 
 ## ROUTES:
@@ -101,14 +102,16 @@ Pedido
 
 The url to your repository and to your deployed project
 
-[Repository Link] (https://github.com/lauraramirezencinas/proyecto3-backend.git)(https://github.com/lauraramirezencinas/sugar-place-frontend)
+[Repository Link] https://github.com/lauraramirezencinas/proyecto3-backend.git
+https://github.com/lauraramirezencinas/sugar-place-frontend
 
-[Deploy Link] (https://sugar-place.herokuapp.com/)
+[Deploy Link] https://sugar-place.herokuapp.com/
 
 
 ### Slides
 
 The url to your presentation slides
 
-[Slides Link](https://docs.google.com/presentation/d/1UYGCT4-OjqdOTPl-vPynqBTnhqqMz7pl1E8uT1NeqxM/edit?usp=sharing)
+[Slides Link]
+https://docs.google.com/presentation/d/1UYGCT4-OjqdOTPl-vPynqBTnhqqMz7pl1E8uT1NeqxM/edit?usp=sharing
 
