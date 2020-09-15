@@ -24,7 +24,11 @@ Un Marketplace donde las pastelerias registrandose puedan poner sus productos. E
 - **500** - Como ususario quiero ver una página de error bonita 
 
 ## Backlog
-
+-**Creación de pedido Anomino**
+-**Camabiar estado de pedido**
+-**Filtrar por estado de pedido**
+-**Alerta nuevo pedido**
+-**Comentarios**
 
 
 ## ROUTES:
