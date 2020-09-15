@@ -97,21 +97,26 @@ Pedido
 
 ## Links
 
+Jira: 
+https://lauraramirez.atlassian.net/secure/RapidBoard.jspa?rapidView=2&projectKey=PROYEC&selectedIssue=PROYEC-38
+
 
 ### Git
 
 The url to your repository and to your deployed project
 
-[Repository Link] https://github.com/lauraramirezencinas/proyecto3-backend.git
+Repo backend : 
+https://github.com/lauraramirezencinas/proyecto3-backend.git
+Repo frontend : 
 https://github.com/lauraramirezencinas/sugar-place-frontend
 
-[Deploy Link] https://sugar-place.herokuapp.com/
+App:
+https://sugar-place.herokuapp.com/
 
 
 ### Slides
 
 The url to your presentation slides
 
-[Slides Link]
 https://docs.google.com/presentation/d/1UYGCT4-OjqdOTPl-vPynqBTnhqqMz7pl1E8uT1NeqxM/edit?usp=sharing
 
