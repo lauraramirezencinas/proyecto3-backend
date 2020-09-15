@@ -1,15 +1,16 @@
 # PROYECTO3
+SUGAR-PLACE
 # Developers: 
 Laura Ramirez
 # Link to App: 
-
+https://sugar-place.herokuapp.com/
 
 * use in mode mobile device at browser, iphone X prefered
 
 
 ## Description
 
-Una plataforma donde las pastelerias registrandose puedan poner sus productos. El ususario anónimo pueda hacer una busqueda y ver los detalles del producto como el precio, ingredientes y toda la informacion de la panaderia (ubicacion, horarios)
+Un Marketplace donde las pastelerias registrandose puedan poner sus productos. El ususario anónimo pueda hacer una busqueda y ver los detalles del producto como el precio, ingredientes y toda la informacion de la panaderia (ubicacion, horarios) y hacer un pedido para ir a recogerlo. 
  
 ## User Stories
 
@@ -19,14 +20,27 @@ Una plataforma donde las pastelerias registrandose puedan poner sus productos. E
 - **logout** - Como usuario, quiero poder cerrar sesión en la página web
 - **products list** - Como usuario, quiero ver todos los lugares donde puedo comprar mi producto
 - **product details** - Como usuario, quiero ver todos los detalles del producto e información de la panaderia
-- **404** - Como ususario quiero ver uan página de error bonita 
-- **500** - Como ususario quiero ver uan página de error bonita 
+- **404** - Como ususario quiero ver una página de error bonita 
+- **500** - Como ususario quiero ver una página de error bonita 
 
 ## Backlog
 
 
 
 ## ROUTES:
+
+- **/api/auth/signup => Sign up**
+- **/api/auth/login => Log In**
+- **/api/auth/logout => Logoutloggedin**
+- **/api/auth/loggedin => Loggedin**
+- **/api/usuario/:id => ver, editar y eliminar usuario**
+- **/api/producto/profile => ver prodcutos de un usuario (logeado)**
+- **/api/producto/all => ver todos los productos**
+- **/api/producto/ => crear un producto**
+- **/api/producto/:id => ver, editar y eliminar un producto**
+- **/api/pedido/ => crear un pedido**
+- **/api/pedido/:id => ver y editar un pedido**
+- **/api/pedido/all => ver todos los pedidos de un usuario**
 
 
 
@@ -35,6 +49,9 @@ Una plataforma donde las pastelerias registrandose puedan poner sus productos. E
 
 ```
 Usuario 
+- nombre: String
+- apellido: String
+- contraseña: String
 - email: String
 - contraseña: String
 - dirección: String
@@ -42,11 +59,8 @@ Usuario
 - isBaker: boolean
 - nombreNegocio: String
 - description: String
-- latitud:Number
-- longitud: Number
 - horarios: string
-- FB:String
-- Instagram:String
+- dirección
 
 
 ```
@@ -56,18 +70,23 @@ Producto
 - nombre: String
 - description: String
 - imagen: String
-- precio: enum
+- precio: num
 - ingredientes: 
 
 
 ```
 ```
-Producto Review
+Pedido
 - userId: String
-- productId: String
+- precioTotal: String
+- items: [nombre,cantidad,precio]
 - fecha:String
-- comentario: String
-- rating: Number 
+- nombre: String
+- email: String
+- telefono: nummber
+- recogida: String
+- status: enum
+
 ```
 ``` 
 
@@ -78,14 +97,14 @@ Producto Review
 
 The url to your repository and to your deployed project
 
-[Repository Link] (https://github.com/lauraramirezencinas/proyecto3-backend.git)
+[Repository Link] (https://github.com/lauraramirezencinas/proyecto3-backend.git)(https://github.com/lauraramirezencinas/sugar-place-frontend)
 
-[Deploy Link] ('')
+[Deploy Link] (https://sugar-place.herokuapp.com/)
 
 
 ### Slides
 
 The url to your presentation slides
 
-[Slides Link](http://slides.com)
+[Slides Link](https://docs.google.com/presentation/d/1UYGCT4-OjqdOTPl-vPynqBTnhqqMz7pl1E8uT1NeqxM/edit?usp=sharing)
 
