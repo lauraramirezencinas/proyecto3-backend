@@ -3,18 +3,17 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require("mongoose");
 const nodemailer = require('nodemailer');
-const Usuario = require('../models/usuario-modelo');
 const Review = require('../models/review-modelo');
 
 
 
 //ver todos las review por baker
-router.get("/all", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
     try {
-        let rewiews = null
-        if (req.user) {
-                rewiews = await Pedido.find({ idUsuario: req.user.id })
-            }                    
+        let rewiews = null 
+
+        rewiews = await Review.find({ idUsuario: req.params.id }) 
+                                      
         res.status(200).json(rewiews)
     }
     catch (err) {
@@ -23,14 +22,14 @@ router.get("/all", async (req, res, next) => {
 })
 
 
+
 //crear una review  
 router.post("/", async (req, res, next) => {
     try {
-        const { nombre, numeroPedido, comentario, rating} = req.body;
-        const idUsuario= req.params.id
+        const { nombre, numeroPedido, comentario, rating, idUsuario} = req.body;
         if (!numeroPedido ) {
              res.status(400).json({
-               message: "El numero del pedido es obligatorio*"
+               message: "Numero del pedido y rating son obligatorios"
              })
              return
            }
