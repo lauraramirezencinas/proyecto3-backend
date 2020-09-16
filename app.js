@@ -120,6 +120,9 @@ app.use('/api/pedido', pedido);
 const location = require("./routes/location-routes");
 app.use('/api/maps', location);
 
+const review = require("./routes/review-routes");
+app.use('/api/review', review);
+
 
 app.use((req, res, next) => {
   // If no routes match, send them the React HTML.
