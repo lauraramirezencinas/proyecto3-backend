@@ -70,35 +70,6 @@ authRoutes.post("/signup", async (req, res, next) => {
       return
     }
 
-
-    // req.session.currentUser = usuario;
-    // let transporter = await nodemailer.createTransport({
-    //   host: "smtp.eu.mailgun.org",
-    //   port: 25,
-    //   auth: {
-    //     user: process.env.USER_MG,
-    //     pass: process.env.PASS_MG
-    //   },
-    // });
-    // transporter.sendMail({
-    //   from: 'info@my-menu.site',
-    //   to: email,
-    //   subject: "¡Bienvenido a MyMenu!",
-    //   html: `<h2><b>Hola</b> ${nombre}, </h1>
-    //   <h3>Bienvenido a MyMenu</h3>
-
-    //   <br/>
-    //   <p>Ahora podrás introducir tu carta o menú del dia y mostrarlo a tus clientes de manera inmediata.</p>
-    //   <br/>
-    //   <p>100% higienico y rapido!</p>
-    //   <img src="https://res.cloudinary.com/dtkvfvtev/image/upload/v1593548914/mymenu_lchxqn.png" alt="logo Mymenu">
-    //   `
-
-    // }, (err, info) => {
-    //   console.log(err);
-    // });
-
-
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
       res.status(400).json({
