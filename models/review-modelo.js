@@ -7,8 +7,8 @@ const reviewSchema = new Schema({
     ref: "Usuario"
   },
   nombre: {
-    type: String, 
-    default:"Anónimo"
+    type: String,
+    default: "Anonimo"
   },
   numeroPedido: {
     type: Number
